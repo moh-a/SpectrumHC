@@ -18,8 +18,50 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	 public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper('url');     
+    } 
 	public function index()
 	{
 		$this->load->view('welcome_message');
 	}
+
+	public function login()
+	{
+		$this->load->view('login');
+	}
+
+	public function signup()
+	{
+		$this->load->view('signUp');
+	}
+
+	public function insertPatient()
+	{
+			$this->load->model('insertPatient_model');
+		$data = array(
+			'name' => $this->input->post('name'),
+			'password' => $this->input->post('pass'),
+			'telephone' => $this->input->post('Tphno'),
+			'email' => $this->input->post('email'),
+			'address' => $this->input->post('add1'),
+			'gender' => $this->input->post('gender'),
+			'country' => $this->input->post('ctry'),
+			'city' => $this->input->post('city'),
+			'role' => "Patient",
+		);
+		   $this->load->library('form_validation');
+		   $this->form_validation->set_rules('name', 'name', 'required');
+                if ($this->form_validation->run() == FALSE)
+                {
+                        var_dump($data);
+                }else{
+                	$this->load->view('patient_View');	
+	                $this->insertPatient_model->insert_Patient($data);
+					
+                }
+	}
+	
 }
