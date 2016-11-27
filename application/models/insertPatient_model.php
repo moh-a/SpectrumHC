@@ -6,7 +6,7 @@ class insertPatient_model extends CI_Model{
 	function insert_Patient($data){
 	// Inserting in Table(students) of Database(college)
 		 $this->load->database();
-		$this->db->insert('patient', $data);
+		$this->db->insert('patient_db', $data);
 	}
 }
 ?>

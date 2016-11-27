@@ -22,6 +22,8 @@ class Welcome extends CI_Controller {
     {
         parent::__construct();
         $this->load->helper('url');     
+
+        $this->load->model('user_authentication');
     } 
 	public function index()
 	{
@@ -38,30 +40,72 @@ class Welcome extends CI_Controller {
 		$this->load->view('signUp');
 	}
 
+	public function roleSelection()
+	{
+		$this->load->view('roleSelection');
+	}
+
 	public function insertPatient()
 	{
 			$this->load->model('insertPatient_model');
-		$data = array(
-			'name' => $this->input->post('name'),
-			'password' => $this->input->post('pass'),
-			'telephone' => $this->input->post('Tphno'),
-			'email' => $this->input->post('email'),
-			'address' => $this->input->post('add1'),
-			'gender' => $this->input->post('gender'),
-			'country' => $this->input->post('ctry'),
-			'city' => $this->input->post('city'),
-			'role' => "Patient",
-		);
+			$data = array(
+				'name' => $this->input->post('name'),
+				'password' => $this->input->post('pass'),
+				'telephone' => $this->input->post('Tphno'),
+				'email' => $this->input->post('email'),
+				'address' => $this->input->post('add1'),
+				'gender' => $this->input->post('gender'),
+				'state' => $this->input->post('state'),
+				'city' => $this->input->post('city'),
+				'role' => "Patient",
+			);
 		   $this->load->library('form_validation');
 		   $this->form_validation->set_rules('name', 'name', 'required');
-                if ($this->form_validation->run() == FALSE)
-                {
-                        var_dump($data);
-                }else{
-                	$this->load->view('patient_View');	
-	                $this->insertPatient_model->insert_Patient($data);
-					
-                }
+	        if ($this->form_validation->run() == FALSE)
+	        {
+	                var_dump($data);
+	        }else{
+	        	$this->load->view('patient_View');	
+	            $this->insertPatient_model->insert_Patient($data);
+				
+	        }
+	}
+
+	public function validateUser()
+	{
+		$data = array(
+				'username' => $this->input->post('username'),
+				'password' => $this->input->post('password'),
+				'role' => $this->input->post('role'),				
+			);
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+	    if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('login.php');
+        }else{
+  
+        		$result = $this->user_authentication->dbCheck($data);
+        	if($data['role'] == "Patient"){
+
+        	}elseif ($data['role'] == "Caregiver") {
+        		# code...
+        	}else{
+
+        	}
+        }
+	}
+
+	public function role()
+	{
+		$roleName = $this->input->post('roleName');
+		var_dump("temp");
+		var_dump($roleName);
+		if($roleName == "Patient"){
+				   $this->load->view('signUp.php');
+		}else{
+ 			var_dump($roleName);
+		}
 	}
 	
 }

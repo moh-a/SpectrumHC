@@ -14,9 +14,19 @@ $this->load->view('../layout/header');
 </div>
 <br>
 <br>
+
+<body>
+
+<div class="container">
+
+  <!-- Trigger the modal with a button -->
+
+  <!-- Modal -->
+ 
+
 <div class="container">
 <div class="row">
-<div class="col-md-4 col-md-offset-4">
+<div class="box-size">
 <div class="form-body">
     <ul class="nav nav-tabs final-login">
         <li class="active"><a data-toggle="tab"  href="#sectionA">Patient</a></li>
@@ -30,35 +40,43 @@ $this->load->view('../layout/header');
 
 	             	<label>Name</label>
 		            <input type="text" name="name">
-		            <label>Telephone</label>
-		            <input type="number" name="Tphno">
-		            <label>Gender</label>
-		            <div class="radio">
-  						<label><input type="radio" name="gender" value="male">Male</label>
-					</div>
-					<div class="radio">
-					 	<label><input type="radio" name="gender" value="female">Female</label>
-					</div>
-					<div class="form-group">
-						<label >Address 1</label>  
-						<input id="add1" name="add1" type="text" placeholder="" class="form-control input-md" required="">
-					</div>
-					<div class="form-group">
-						<label>City</label> 
-						<input id="city" name="city" type="text" placeholder="city" class="form-control input-md" required="">
-					</div>
-					<div class="form-group">
-						  <label>Zip Code</label>  
-						  <input id="zip" name="zip" type="text" placeholder="Zip Code" class="form-control input-md" required="">
-					</div>
-					<div class="form-group">
-						 <label>Country</label>  
-						 <input id="ctry" name="ctry" type="text" placeholder="Country" class="form-control input-md" required="">
-					</div>
-		            <label>Email Address</label>
+		             <label>Email Address</label>
 		            <input type="text" name="email">
 		            <label>Password</label>
 		            <input type="password" name="pass">
+		            <label>Gender</label>
+		            <div class="row">
+						<div class="col-sm-2 form-group">
+			            	<div class="radio">
+	  							<label><input type="radio" name="gender" value="male">Male</label>
+							</div>
+						</div>
+						<div class="col-sm-2 form-group">
+							<div class="radio">
+							 	<label><input type="radio" name="gender" value="female">Female</label>
+							</div>
+						</div>
+					</div>		
+					<div class="form-group">
+						<label >Address</label>  
+						<input id="add1" name="add1" type="text" placeholder="" class="form-control input-md" required="">
+					</div>
+					<div class="row">
+							<div class="col-sm-4 form-group">
+								<label>City</label>
+								<input type="text"  name="city" placeholder="Enter City Name Here.." class="form-control">
+							</div>	
+							<div class="col-sm-4 form-group">
+								<label>State</label>
+								<input type="text" name="state" placeholder="Enter State Name Here.." class="form-control">
+							</div>	
+							<div class="col-sm-4 form-group">
+								<label>Postal</label>
+								<input type="text" name="postalcode" placeholder="Enter Zip Code Here.." class="form-control">
+							</div>		
+					</div>
+		            <label>Telephone</label>
+		            <input type="number" name="Tphno">
 		            <button type="submit">Sign In</button>
 
 	            </form>
@@ -78,47 +96,23 @@ $this->load->view('../layout/header');
 					<div class="radio">
 					 	<label><input type="radio" name="Fmale">Female</label>
 					</div>
-					<label>Avability</label>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Monday</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Tuesday</label>
-					</div>
-					<div class="checkbox">
-					 	<label><input type="checkbox" value="">Wednesday</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Thursday</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Friday</label>
-					</div>
-					<div class="checkbox">
-					 	<label><input type="checkbox" value="">Saturday</label>
-					</div>
-					<div class="checkbox">
-					 	<label><input type="checkbox" value="">Sunday</label>
-					</div>
-					<div class="form-group">
-						<label >Address 1</label>  
+						<div class="form-group">
+						<label >Address</label>  
 						<input id="add1" name="add1" type="text" placeholder="" class="form-control input-md" required="">
 					</div>
-					<div class="form-group">
-						<label>Address 2</label> 
-						<input id="add2" name="add2" type="text" placeholder="" class="form-control input-md">
-					</div>
-					<div class="form-group">
-						<label>City</label> 
-						<input id="city" name="city" type="text" placeholder="city" class="form-control input-md" required="">
-					</div>
-					<div class="form-group">
-						  <label>Zip Code</label>  
-						  <input id="zip" name="zip" type="text" placeholder="Zip Code" class="form-control input-md" required="">
-					</div>
-					<div class="form-group">
-						 <label>Country</label>  
-						 <input id="ctry" name="ctry" type="text" placeholder="Country" class="form-control input-md" required="">
+					<div class="row">
+							<div class="col-sm-4 form-group">
+								<label>City</label>
+								<input type="text" placeholder="Enter City Name Here.." class="form-control">
+							</div>	
+							<div class="col-sm-4 form-group">
+								<label>State</label>
+								<input type="text" placeholder="Enter State Name Here.." class="form-control">
+							</div>	
+							<div class="col-sm-4 form-group">
+								<label>Postal</label>
+								<input type="text" placeholder="Enter Zip Code Here.." class="form-control">
+							</div>		
 					</div>
 		            <label>Email Address</label>
 		            <input type="text" name="email">
