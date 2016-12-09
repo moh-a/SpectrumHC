@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+//session_start(); //we need to start session in order to access it through CI
 class Welcome extends CI_Controller {
 
 	/**
@@ -27,14 +28,15 @@ class Welcome extends CI_Controller {
     } 
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('login');
+		//$this->load->view('welcome_message');
 	}
-
+/* 
 	public function login()
 	{
 		$this->load->view('login');
 	}
-
+ */
 	public function signup()
 	{
 		$this->load->view('signUp');
@@ -82,17 +84,38 @@ class Welcome extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'required');
 	    if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('login.php');
+        	$this->load->view('login.php');
         }else{
   
-        		$result = $this->user_authentication->dbCheck($data);
-        	if($data['role'] == "Patient"){
-
-        	}elseif ($data['role'] == "Caregiver") {
-        		# code...
-        	}else{
-
+        	$result = $this->user_authentication->dbCheck($data);
+        	if($result==true)
+        	{
+	        	
+        		$session_data = array(
+        				'username' => $data['username']
+        				
+        		);
+        		$this->session->set_userdata('logged_in', $session_data);
+        		
+        		
+        		
+        		
+        		
+        		if($data['role'] == "Patient"){
+						$this->load->view('patient_View.php');
+	        	}elseif ($data['role'] == "Caregiver") {
+	        			$this->load->view('CareGiver_View.php');
+	        	}elseif ($data['role'] == "Admin"){
+	        		$this->load->view('Admin_View.php');
+	        	}
+        		
         	}
+        	else
+        	{
+        		echo "Opps! Wrong Id OR Password OR Role";
+        		$this->load->view('login.php');
+        	}
+        	
         }
 	}
 

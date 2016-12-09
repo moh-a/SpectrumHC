@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Patient Portal</title>
+<title>Admin Portal</title>
 </head>
 <body>
 

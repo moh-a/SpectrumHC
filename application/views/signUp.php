@@ -77,7 +77,7 @@ $this->load->view('../layout/header');
 					</div>
 		            <label>Telephone</label>
 		            <input type="number" name="Tphno">
-		            <button type="submit">Sign In</button>
+		            <button type="submit">Sign Up</button>
 
 	            </form>
 	        </div>
@@ -118,7 +118,7 @@ $this->load->view('../layout/header');
 		            <input type="text" name="email">
 		            <label>Password</label>
 		            <input type="password" name="password">
-		            <button type="submit">Sign In</button>
+		            <button type="submit">Sign Up</button>
 		            
 	            </form>
 	        </div>
