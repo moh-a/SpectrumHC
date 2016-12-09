@@ -13,7 +13,7 @@ $this->load->view('../layout/header');
 			<div class="form-body">
 				<div class="innter-form">
 
-  						<?php echo 	q2(); ?>
+  						<?php echo validation_errors(); ?>
 				        <?php echo form_open('welcome/validateUser', array('class' => 'sa-innate-form')); ?>
 				            <label>Email Address</label>
 				            <input type="text" name="username">
