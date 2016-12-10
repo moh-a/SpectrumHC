@@ -41,7 +41,7 @@ body{
   font-size:16px;
 }
 
-.sa-innate-form input[type=text], input[type=password], input[type=number], textarea, select, email{
+.sa-innate-form input[type=email], input[type=text], input[type=password], input[type=number], textarea, select, email{
     font-size:13px;
   padding:10px;
   border:1px solid#ccc;

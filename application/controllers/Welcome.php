@@ -55,20 +55,51 @@ class Welcome extends CI_Controller {
 				'password' => $this->input->post('pass'),
 				'telephone' => $this->input->post('Tphno'),
 				'email' => $this->input->post('email'),
-				'address' => $this->input->post('add1'),
 				'gender' => $this->input->post('gender'),
-				'state' => $this->input->post('state'),
+				'DOB' => $this->input->post('dob'),
+				'preferredLanguage' => $this->input->post('language'),
+				'address' => $this->input->post('add1'),
 				'city' => $this->input->post('city'),
-				'role' => "Patient",
+				'state' => $this->input->post('state'),
+				'postalCode' => $this->input->post('postalcode'),
+				//'role' => "Patient",
 			);
 		   $this->load->library('form_validation');
 		   $this->form_validation->set_rules('name', 'name', 'required');
+		   $this->form_validation->set_rules('pass', 'password', 'required|min_length[8]');
+		   $this->form_validation->set_rules('Tphno', 'Telephone', 'required|exact_length[10]');
+		   $this->form_validation->set_rules('email', 'email', 'required|valid_email');
+		   $this->form_validation->set_rules('gender', 'gender', 'required');
+		   $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
+		   $this->form_validation->set_rules('add1', 'Address', 'required');
+		   $this->form_validation->set_rules('city', 'City', 'required|alpha');
+		   $this->form_validation->set_rules('state', 'state', 'required|alpha');
+		   $this->form_validation->set_rules('postalcode', 'Postal Code', 'required|alpha_dash');
+	       
 	        if ($this->form_validation->run() == FALSE)
 	        {
-	                var_dump($data);
+	        	$this->load->view('SignUp.php');
+	               // var_dump($data);
 	        }else{
-	        	$this->load->view('patient_View');	
-	            $this->insertPatient_model->insert_Patient($data);
+	           $result= $this->insertPatient_model->insert_Patient($data);
+	            if($result==true)
+	            {
+	            	$this->data['success_message'] = 'User Successfully Created';
+	            	$this->load->view('login.php',	$this->data);
+	            	
+	            
+	            	//$this->load->view('login.php');
+	            	
+	              //$this->load->view('login');
+		          //  $this->load->view('insert_Success');	
+	            	
+	            }
+	           else
+	           {
+	           	$this->data['err_message'] = 'Error ! User Already Exists';
+	           	$this->load->view('SignUp.php',	$this->data);
+	           
+	           }
 				
 	        }
 	}
@@ -91,14 +122,8 @@ class Welcome extends CI_Controller {
         	if($result==true)
         	{
 	        	
-        		$session_data = array(
-        				'username' => $data['username']
-        				
-        		);
+        		$session_data = array('username' => $data['username']);
         		$this->session->set_userdata('logged_in', $session_data);
-        		
-        		
-        		
         		
         		
         		if($data['role'] == "Patient"){

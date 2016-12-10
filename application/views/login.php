@@ -14,6 +14,14 @@ $this->load->view('../layout/header');
 				<div class="innter-form">
 
   						<?php echo validation_errors(); ?>
+  						<?php
+							if (isset($success_message)) {
+							echo "<div class='message'>";
+							echo "<p><font color='red'> <h3 align=center>";
+							echo $success_message;
+							echo "</h3></font></p>";
+							echo "</div>";}?>	
+  						
 				        <?php echo form_open('welcome/validateUser', array('class' => 'sa-innate-form')); ?>
 				            <label>Email Address</label>
 				            <input type="text" name="username">
