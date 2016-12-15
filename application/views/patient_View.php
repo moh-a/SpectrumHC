@@ -52,8 +52,8 @@ $this->load->view('../layout/header');
 	            <?php echo form_open('Load_PatientData', array('class' => 'sa-innate-form')); ?>
 
 <?php foreach($member as $mem){
-	echo $mem['name'];
-	echo $mem['email'];
+	//echo $mem['name'];
+	//echo $mem['email'];
 }?>
 	             	<label>Name</label>
 		            <input type="text" name="name">
