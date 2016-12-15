@@ -3,7 +3,8 @@ class insertPatient_model extends CI_Model{
 	function __construct() {
 		parent::__construct();
 	}
-	function insert_Patient($data){
+	function insert_Patient($data)
+	{
 		$data2=array('username' => $data['email'],'password' =>$data['password'],'type' =>'Patient');
 		$this->load->database();
 		//first check whether the user already exist in the system.
